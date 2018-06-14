@@ -74,12 +74,13 @@ class Util
 
     public function getThelogin()
     {
-        return $this->thelogin;
+        // 8 format getters
+        return html_entity_decode($this->thelogin);
     }
 
     public function getThename()
     {
-        return $this->thename;
+        return html_entity_decode($this->thename);
     }
 
     public function getThepwd()
