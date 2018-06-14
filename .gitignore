@@ -4,4 +4,6 @@
 .idea/
 # NetBeans
 /nbproject/
+# .bak workbench
+/datas/php-oo-mvc-juin2.mwb.bak
 
