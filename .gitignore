@@ -1,1 +1,7 @@
-# Created by .ignore support plugin (hsz.mobi)
+### Example user template
+
+# PHPStorm IntelliJ project files
+.idea/
+# NetBeans
+/nbproject/
+
