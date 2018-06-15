@@ -6,8 +6,11 @@
 
 class Article
 {
-    # aaa020
+    # aaa020 mapping table article
     private $idarticle, $thetitle, $thetext, $thedate, $utilIdutil;
+
+    # aaa057 attributs from table util for JOIN (see ArticleManager.class.php)
+    private $idutil, $thelogin, $thename;
 
     # aaa021
     public function __construct(array $datas)
@@ -96,6 +99,45 @@ class Article
     public function getUtilIdutil()
     {
         return $this->utilIdutil;
+    }
+
+
+    # aaa058 Setters for util column
+    public function setIdutil($idutil)
+    {
+        $this->idutil = (int) $idutil;
+    }
+
+    public function setThelogin(string $thelogin)
+    {
+        $data = trim(htmlspecialchars(strip_tags($thelogin)),ENT_QUOTES);
+        if(!empty($data)) {
+            $this->thelogin = $data;
+        }
+    }
+
+    public function setThename(string $thename)
+    {
+        $data = trim(htmlspecialchars(strip_tags($thename)),ENT_QUOTES);
+        if(!empty($data)) {
+            $this->thename = $data;
+        }
+    }
+
+    # aaa059 Getters for util column
+    public function getIdutil()
+    {
+        return $this->idutil;
+    }
+
+    public function getThelogin()
+    {
+        return html_entity_decode($this->thelogin);
+    }
+
+    public function getThename()
+    {
+        return html_entity_decode($this->thename);
     }
 
 }

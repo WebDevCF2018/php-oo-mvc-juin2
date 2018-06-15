@@ -22,7 +22,14 @@ class ArticleManager
     public function listArticle(){
 
         # aaa038 - recup all articles without util at the moment
-        $get = $this->db->query("SELECT a.* FROM article a ORDER BY a.thedate DESC;");
+        // $get = $this->db->query("SELECT a.* FROM article a ORDER BY a.thedate DESC;");
+
+        # aaa060 - replace a38 recup all articles with JOIN util
+        $get = $this->db->query("SELECT a.*,
+          u.idutil,u.thelogin,u.thename 
+          FROM article a INNER JOIN util u 
+            ON a.utilIdutil = u.idutil
+          ORDER BY a.thedate DESC;");
 
         # aaa039 => one or more result
         if($get->rowCount()){
