@@ -4,11 +4,14 @@
  * Public controller
  */
 
-# aaa030 create homepage login
+# aaa030 create routing login
 if(isset($_GET['login'])){
 
 
-# aaa031 create homepage
+# aaa031 create routing homepage
 }else{
+
+
+
 
 }
