@@ -2,7 +2,7 @@
 /**
  * Config, add in .gitignore when you make the true login and password
  */
-// create connection constants
+// create connection constants # aaa004
 define("DB_TYPE","mysql");
 define("DB_HOST","localhost");
 define("DB_NAME","php-oo-mvc-juin2");

@@ -1,17 +1,22 @@
 <?php
+# aaa019
 /**
  * Mapping table article
  */
 
 class Article
 {
+    # aaa020
     private $idarticle, $thetitle, $thetext, $thedate, $utilIdutil;
 
+    # aaa021
     public function __construct(array $datas)
     {
+        # aaa023
         $this->hydrate($datas);
     }
 
+    # aaa022
     private function hydrate(Array $theDatas){
         foreach ($theDatas as $thekey => $thevalue){
             $createNameSetter = "set".ucfirst($thekey);
@@ -23,9 +28,10 @@ class Article
         }
     }
 
-
+    # aaa024 setters
     public function setIdarticle($idarticle)
     {
+        # aaa026 format setters
         $this->idarticle = (int) $idarticle;
     }
 
@@ -65,9 +71,10 @@ class Article
         $this->utilIdutil = (int) $utilIdutil;
     }
 
-
+    # aaa025 getters
     public function getIdarticle()
     {
+        # aaa027 format getters
         return $this->idarticle;
     }
 
@@ -92,9 +99,3 @@ class Article
     }
 
 }
-/*
-$test = new Article(["idarticle"=>16, "thetitle"=>"Titre", "thetext"=>"Bonjour à tous", "thedate"=>"2018-05-24 21:12:25", "utilIdutil"=>5]);
-echo "<pre>";
-var_dump($test);
-echo "</pre>";
-*/

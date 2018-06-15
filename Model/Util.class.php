@@ -1,21 +1,22 @@
 <?php
+# aaa010
 /**
  * Mapping table util
  */
 
 class Util
 {
-    // 1
+    # aaa011
     private $idutil, $thelogin, $thename, $thepwd, $themail;
 
-    // 2
+    # aaa012
     public function __construct(Array $datas)
     {
-        // 4
+        # aaa014
         $this->hydrate($datas);
     }
 
-    // 3
+    # aaa013
     private function hydrate(Array $theDatas){
         foreach ($theDatas as $thekey => $thevalue){
             $createNameSetter = "set".ucfirst($thekey);
@@ -28,11 +29,11 @@ class Util
     }
 
 
-    // 5 Setters
+    # aaa015 Setters
 
     public function setIdutil($idutil)
     {
-        // 7 protected setters
+        # aaa017 protected setters
         $this->idutil = (int) $idutil;
     }
 
@@ -65,7 +66,7 @@ class Util
         }
     }
 
-    // 6 getters
+    # aaa016 getters
 
     public function getIdutil()
     {
@@ -74,7 +75,7 @@ class Util
 
     public function getThelogin()
     {
-        // 8 format getters
+        # aaa018 format getters
         return html_entity_decode($this->thelogin);
     }
 
@@ -92,12 +93,4 @@ class Util
     {
         return $this->themail;
     }
-
 }
-/*
-$array= new Util(["idutil"=>5,"thename"=>"coucou","thelulu"=>5]);
-$array2 = new Util(["idutil"=>"3","thelogin"=>"pouD<br>d","thename"=>"Pierre","thepwd"=>"admin","themail"=>"gggg@dd.com"]);
-echo "<pre>";
-var_dump($array,$array2);
-echo "</pre>";
-*/
