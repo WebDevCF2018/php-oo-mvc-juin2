@@ -6,6 +6,8 @@
 
 # aaa050 ArticleManager
 $ArticleM = new ArticleManager($pdo);
+# aaa077 UtilManager
+$UtilM = new UtilManager($pdo);
 
 # var_dump($ArticleM);
 
@@ -16,6 +18,23 @@ if(isset($_GET['login'])) {
     # aaa073 form not submitted
     if(empty($_POST)){
         require_once "View/connect.view.php";
+    }else{
+        # aaa075
+        $ident = new Util($_POST);
+
+        # aaa083 - verification
+        $connect = $UtilM->identUtil($ident);
+
+        # aaa084
+        if($connect){
+            // if true
+            header("Location: ./");
+        }else{
+            // if false
+            $error = "Login et/ou mot de passe incorrect";
+            require_once "View/connect.view.php";
+        }
+
     }
 
 # aaa062 create routing for single article
