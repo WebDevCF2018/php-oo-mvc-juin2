@@ -59,4 +59,9 @@ class ArticleManager
         }
     }
 
+    # aaa094 Create (Crud)
+    public function createArticle(Article $datas){
+
+    }
+
 }
