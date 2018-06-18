@@ -1,35 +1,48 @@
 <?php
-# aaa065 create detail view
+# aaa066 create detail view
+
+if(is_string($oneView)){
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Accueil</title>
+    <title>Article: <?= $oneView ?></title>
 </head>
 <body>
-<h1>Accueil</h1>
-<?php
-# aaa054 if $listView is not a array
-if (!is_array($listView)) {
-    echo "<h2>$listView</h2>";
-} else {
-    # aaa055 $listView is a array
-    foreach ($listView as $item) {
+<h1>Article: <?= $oneView ?></h1>
 
-        # aaa056 list all articles
-        ?>
-        <h3><?= $item->getThetitle(); ?></h3>
-        <p><?= substr($item->getThetext(),0,150); ?> ... <a href="?detail=<?= $item->getIdarticle(); ?>">Lire la suite</a></p>
-        <p><?= $item->getThedate(); ?>
+<?php
+    # aaa069 include menu
+    include "View/menu.view.php";
+}else{
+
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Article: <?= $oneView->getThetitle() ?></title>
+</head>
+<body>
+<h1>Article: <?= $oneView->getThetitle() ?></h1>
+
+<?php
+# aaa070 include menu
+include "View/menu.view.php";
+
+# aaa067 $oneView is an object "Article"
+?>
+        <h3><?= $oneView->getThetitle(); ?></h3>
+        <p><?= $oneView->getThetext() ?></p>
+        <p><?= $oneView->getThedate(); ?>
             Par <?php
-            # aaa061
-            echo "<a href='?user={$item->getIdutil()}'>{$item->getTheName()}</a>";
+            echo "<a href='?user={$oneView->getIdutil()}'>{$oneView->getTheName()}</a>";
             ?></p>
         <hr>
         <?php
-    }
-}
+        }
 ?>
 </body>
 </html>

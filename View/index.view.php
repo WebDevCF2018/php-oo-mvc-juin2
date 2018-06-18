@@ -10,6 +10,9 @@
 <body>
 <h1>Accueil</h1>
 <?php
+# aaa071 include menu
+include "View/menu.view.php";
+
 # aaa054 if $listView is not a array
 if (!is_array($listView)) {
     echo "<h2>$listView</h2>";
