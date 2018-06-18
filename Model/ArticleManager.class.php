@@ -42,5 +42,21 @@ class ArticleManager
             return false;
         }
     }
+    # aaa063 get one article
+    public function oneArticle(int $id){
+        $sql = "SELECT a.*,
+          u.idutil,u.thelogin,u.thename 
+          FROM article a INNER JOIN util u 
+            ON a.utilIdutil = u.idutil
+          WHERE a.idarticle=?";
+        $request = $this->db->prepare($sql);
+        $request->bindValue(1,$id,PDO::PARAM_INT);
+        $request->execute();
+        if($request->rowCount()){
+            return $request->fetch(PDO::FETCH_ASSOC);
+        }else{
+            return false;
+        }
+    }
 
 }
