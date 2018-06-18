@@ -34,7 +34,7 @@ class ArticleManager
         # aaa039 => one or more result
         if($get->rowCount()){
 
-            # aaa41 - return array assoc's in array index
+            # aaa041 - return array assoc's in array index
             return $get->fetchAll(PDO::FETCH_ASSOC);
 
         }else{
