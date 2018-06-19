@@ -59,9 +59,51 @@ class ArticleManager
         }
     }
 
+    # aaa103 list all articles by idutil
+    public function listArticleUtil(int $idutil){
+
+        $get = $this->db->query("SELECT a.*,
+          u.idutil,u.thelogin,u.thename 
+          FROM article a INNER JOIN util u 
+            ON a.utilIdutil = u.idutil
+          WHERE u.idutil = $idutil
+          ORDER BY a.thedate DESC;");
+
+        # aaa104 => one or more result
+        if($get->rowCount()){
+
+            # aaa105 - return array assoc's in array index
+            return $get->fetchAll(PDO::FETCH_ASSOC);
+
+        }else{
+            # aaa106 => no result => return false
+            return false;
+        }
+    }
+
     # aaa094 Create (Crud)
     public function createArticle(Article $datas){
+        # aaa100 if the idutil is the same as utilIdutil
+        if($datas->getUtilIdutil()==$_SESSION['idutil']){
 
+            $sql = "INSERT INTO article (thetitle,thetext,thedate,utilIdutil) VALUES (?,?,?,?)";
+
+            $post = $this->db->prepare($sql);
+
+            $post->bindValue(1,$datas->getThetitle(),PDO::PARAM_STR);
+            $post->bindValue(2,$datas->getThetext(),PDO::PARAM_STR);
+            $post->bindValue(3,$datas->getThedate(),PDO::PARAM_STR);
+            $post->bindValue(4,$datas->getUtilIdutil(),PDO::PARAM_INT);
+
+            $post->execute();
+
+            if($post->rowCount()){
+                return true;
+            }
+            return false;
+        }else{
+            return false;
+        }
     }
 
 }

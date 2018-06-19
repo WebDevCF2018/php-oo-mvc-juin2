@@ -14,5 +14,22 @@
 include "View/menu.view.php";
 ?>
 <h2>Bienvenue <?=$_SESSION['thename']?></h2>
+<?php
+# aaa108
+if(!is_array($affiche)){
+    echo "<h3>$affiche</h3>";
+}else{
+    foreach ($affiche AS $item) {
+        ?>
+<h3><?= $item->getThetitle(); ?></h3>
+<p><a href="?update=<?=$item->getIdarticle()?>"><img src="Asset/img/update.png" title="update" alt="update"></a>
+    <img src="Asset/img/delete.png" title="delete" alt="delete">
+</p>
+<p><?= substr($item->getThetext(),0,150); ?> ...</p>
+        <p><?= $item->getThedate(); ?></p><hr>
+        <?php
+    }
+}
+?>
 </body>
 </html>
