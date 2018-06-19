@@ -18,24 +18,39 @@ if(isset($_GET['deconnect'])) {
     $UtilM->deconnect();
 
 # aaa095 create article
-}elseif(isset($_GET['post']))   {
+}elseif(isset($_GET['post'])) {
 
     # aaa096 form not submitted
-    if(empty($_POST)){
+    if (empty($_POST)) {
         # aaa097 - view form
         require "View/createArticleAdmin.view.php";
-    }else{
+    } else {
         $newArticle = new Article($_POST);
         # aaa101 - insert into DB
         $succes = $ArticleM->createArticle($newArticle);
-        if($succes){
+        if ($succes) {
             header("Location: ./");
-        }else{
+        } else {
             # aaa102 - view form with error
             $error = "Article non inséré, veuillez recommencer";
             require "View/createArticleAdmin.view.php";
         }
     }
+# aaa109 update an article
+}elseif(isset($_GET['update'])&&ctype_digit($_GET['update'])){
+
+    $idarticle = (int) $_GET['update'];
+
+    # aaa114 END
+
+    # aaa110 get one article by idarticle
+    $recup = $ArticleM->oneArticle($idarticle);
+    if($recup) {
+        $recup2 = new Article($recup);
+    }
+
+    # aaa111 view
+    require_once "View/updateArticleAdmin.view.php";
 
 # aaa089 homepage admin
 }else{
