@@ -22,7 +22,8 @@ if(isset($_GET['deconnect'])) {
 
     # aaa096 form not submitted
     if(empty($_POST)){
-        
+        # aaa097 - view form
+        require "View/createArticleAdmin.view.php";
     }else{
 
     }
