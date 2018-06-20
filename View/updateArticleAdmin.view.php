@@ -23,6 +23,8 @@ if(!$recup){
     <form action="" name="oneName2" method="post">
         <input type="text" name="thetitle" placeholder="Le titre" required value="<?=$recup2->getThetitle()?>"><br>
         <textarea name="thetext" placeholder="Votre texte" required><?=$recup2->getThetext()?></textarea><br>
+        <!-- # aaa117 idarticle -->
+        <input type="hidden" name="idarticle" value="<?=$recup2->getIdarticle()?>">
         <input type="hidden" name="utilIdutil" value="<?=$recup2->getUtilIdutil()?>">
         <!-- # aaa114 before choosing a datetime picker -->
         <input type="text" name="thedate" value="<?= $recup2->getThedate() ?>"><br>

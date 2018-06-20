@@ -105,5 +105,38 @@ class ArticleManager
             return false;
         }
     }
+    
+    # aaa119 update article (crUd)
+    public function updateArticle(Article $newDatas, int $getIdArticle){
+       
+        # aaa120 verif if user is creator of article 
+        if($newDatas->getUtilIdutil()==$_SESSION['idutil']){
+            # aaa121 verif if article is the same in object and url
+            if($newDatas->getIdarticle()==$getIdArticle){
+                # aaa122 prepare update
+                $sql = "UPDATE article SET thetitle=?, thetext=?, thedate=? WHERE idarticle=?";
+                $update = $this->db->prepare($sql);
+                # aaa123 execute with array for replace bindValue or bindParam without type verification
+                $update->execute(
+                        [
+                            $newDatas->getThetitle(),
+                            $newDatas->getThetext(),
+                            $newDatas->getThedate(),
+                            $newDatas->getIdarticle()
+                        ]);
+                # aaa124 if update ok
+                if($update->rowCount()){
+                    return true;
+                }else{
+                    return false;
+                }
+                
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 
 }
