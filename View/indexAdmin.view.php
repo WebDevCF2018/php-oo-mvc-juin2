@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin - Accueil</title>
+    <!-- # aaa127 import JS -->
+    <script src="Asset/js/myJs.min.js"></script>
 </head>
 <body>
 <h1>Admin - Accueil</h1>
@@ -23,7 +25,8 @@ if(!is_array($affiche)){
         ?>
 <h3><?= $item->getThetitle(); ?></h3>
 <p><a href="?update=<?=$item->getIdarticle()?>"><img src="Asset/img/update.png" title="update" alt="update"></a>
-    <img src="Asset/img/delete.png" title="delete" alt="delete">
+    <!-- # aaa127 function js Delete() -->
+    <img src="Asset/img/delete.png" title="delete" alt="delete" onclick="Delete(<?=$item->getIdarticle()?>);">
 </p>
 <p><?= substr($item->getThetext(),0,150); ?> ...</p>
         <p><?= $item->getThedate(); ?></p><hr>

@@ -138,5 +138,21 @@ class ArticleManager
             return false;
         }
     }
+    
+    # aaa128 Delete Article (cruD)
+    public function deleteArticle(Article $id){
+        # aaa129 perpare delete if utilIdutil is the same in SESSION
+        $sql = "DELETE FROM article WHERE idarticle=? AND utilIdutil=?";
+        $del = $this->db->prepare($sql);
+        $del->bindValue(1, $id->getIdarticle(),PDO::PARAM_INT);
+        # aaa130 permission user to delete his article
+        $del->bindValue(2, $_SESSION['idutil'],PDO::PARAM_INT);
+        $del->execute();
+        if($del->rowCount()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }

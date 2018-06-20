@@ -64,7 +64,21 @@ if (isset($_GET['deconnect'])) {
             $UtilM->deconnect();
         }
     }
-
+# aaa125 delete an article
+}elseif(isset($_GET['delete'])&& ctype_digit($_GET['delete'])){
+    $deleteId = (int) $_GET['delete'];
+    # aaa128 use setter of Article
+    $article = new Article(["idarticle"=>$deleteId]);
+    
+    # aaa131 delete article
+    $del = $ArticleM->deleteArticle($article);
+    if($del){
+        header("Location: ./");
+    }else{
+        $UtilM->deconnect();
+    }
+    
+    
 # aaa089 homepage admin
 } else {
     # aaa107
